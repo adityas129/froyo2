@@ -230,6 +230,112 @@ footer {
     border-top: 1px solid #ddd;
 }
 
+.secret-message {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    opacity: 0.7;
+    font-style: italic;
+    transition: opacity 0.3s ease;
+}
+
+.secret-message:hover {
+    opacity: 1;
+}
+
+.founder {
+    background-color: white;
+    padding: 5rem 2rem;
+    position: relative;
+}
+
+.founder-message {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.1);
+}
+
+.founder-image {
+    width: 120px;
+    height: 120px;
+    margin: -60px auto 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.froyo-icon {
+    font-size: 50px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.founder h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.founder blockquote {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    font-style: italic;
+    margin-bottom: 2rem;
+    text-align: left;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.founder blockquote::before,
+.founder blockquote::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    line-height: 1;
+}
+
+.founder blockquote::before {
+    left: -1rem;
+    top: -1rem;
+}
+
+.founder blockquote::after {
+    right: -1rem;
+    bottom: -2rem;
+}
+
+.founder-signature {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 2rem;
+}
+
+.founder-title {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -249,5 +355,28 @@ footer {
     
     .step {
         padding: 1.5rem;
+    }
+    
+    .founder {
+        padding: 4rem 1rem;
+    }
+
+    .founder-message {
+        padding: 1.5rem;
+    }
+
+    .founder blockquote {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .founder-image {
+        width: 100px;
+        height: 100px;
+        margin: -50px auto 15px;
+    }
+
+    .froyo-icon {
+        font-size: 40px;
     }
 }
