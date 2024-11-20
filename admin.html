@@ -129,7 +129,7 @@
         // Initialize Supabase client (using the same configuration as main site)
         const supabaseUrl = 'https://vqddjqohtysdysehfqiz.supabase.co'
         const supabaseKey = 'thisisafunnyprank'
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey)
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey)
 
         // Check if user is already logged in
         supabase.auth.onAuthStateChange((event, session) => {

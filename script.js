@@ -23,6 +23,36 @@ const mockMeetings = [
     }
 ];
 
+// Story submission handler
+document.getElementById('story-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const storyContent = e.target.querySelector('textarea').value;
+    
+    if (!storyContent.trim()) {
+        alert('Please enter your story before submitting.');
+        return;
+    }
+
+    try {
+        const { data, error } = await window.supabase
+            .from('stories')
+            .insert([
+                { content: storyContent }
+            ]);
+
+        if (error) {
+            console.error('Error submitting story:', error);
+            throw error;
+        }
+
+        alert('Thank you for sharing your story!');
+        e.target.querySelector('textarea').value = ''; // Clear the form
+    } catch (error) {
+        console.error('Submission error:', error);
+        alert('There was an error submitting your story - please try again');
+    }
+});
+
 // Handle meeting search
 function findMeetings() {
     const location = document.getElementById('location').value.toLowerCase();
@@ -58,31 +88,6 @@ function findMeetings() {
         resultsDiv.appendChild(meetingCard);
     });
 }
-
-// Handle story form submission
-document.getElementById('story-form')?.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const story = e.target.querySelector('textarea').value;
-    if (story.trim()) {
-        try {
-            const { data, error } = await supabase
-                .from('stories')
-                .insert([
-                    { content: story }
-                ]);
-
-            if (error) throw error;
-
-            alert('Thank you for sharing your story. Your experience will help others in their journey.');
-            e.target.reset();
-        } catch (error) {
-            console.error('Error submitting story:', error);
-            alert('There was an error submitting your story. Please try again.');
-        }
-    } else {
-        alert('Please share your story before submitting.');
-    }
-});
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
