@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYA Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #ff69b4;
+        }
+        .story, .registration {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .content {
+            margin: 10px 0;
+        }
+        .no-data {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frozen Yogurt Anonymous - Admin Dashboard</h1>
+        
+        <div class="section">
+            <h2>Submitted Stories</h2>
+            {% if stories %}
+                {% for story in stories %}
+                <div class="story">
+                    <div class="timestamp">{{ story.timestamp }}</div>
+                    <div class="content">{{ story.content }}</div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-data">No stories submitted yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Meeting Registrations</h2>
+            {% if registrations %}
+                {% for reg in registrations %}
+                <div class="registration">
+                    <div class="timestamp">{{ reg.timestamp }}</div>
+                    <div class="content">
+                        <strong>Meeting:</strong> {{ reg.meeting_name }}<br>
+                        <strong>Name:</strong> {{ reg.name or 'Anonymous' }}<br>
+                        <strong>Email:</strong> {{ reg.email or 'Not provided' }}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="no-data">No meeting registrations yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

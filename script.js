@@ -60,12 +60,25 @@ function findMeetings() {
 }
 
 // Handle story form submission
-document.getElementById('story-form')?.addEventListener('submit', function(e) {
+document.getElementById('story-form')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const story = e.target.querySelector('textarea').value;
     if (story.trim()) {
-        alert('Thank you for sharing your story. Your experience will help others in their journey.');
-        e.target.reset();
+        try {
+            const { data, error } = await supabase
+                .from('stories')
+                .insert([
+                    { content: story }
+                ]);
+
+            if (error) throw error;
+
+            alert('Thank you for sharing your story. Your experience will help others in their journey.');
+            e.target.reset();
+        } catch (error) {
+            console.error('Error submitting story:', error);
+            alert('There was an error submitting your story. Please try again.');
+        }
     } else {
         alert('Please share your story before submitting.');
     }
@@ -86,8 +99,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Handle meeting join button click
-function joinMeeting(meetingName) {
-    alert(`Thank you for joining ${meetingName}! A confirmation email will be sent with meeting details.`);
+async function joinMeeting(meetingName) {
+    const name = prompt('Please enter your name (optional):');
+    const email = prompt('Please enter your email (optional):');
+    
+    try {
+        const { data, error } = await supabase
+            .from('meeting_registrations')
+            .insert([
+                {
+                    meeting_name: meetingName,
+                    name: name || null,
+                    email: email || null
+                }
+            ]);
+
+        if (error) throw error;
+
+        alert(`Thank you for joining ${meetingName}! ${email ? 'A confirmation email will be sent shortly.' : ''}`);
+    } catch (error) {
+        console.error('Error registering for meeting:', error);
+        alert('There was an error registering for the meeting. Please try again.');
+    }
 }
 
 // Handle new meeting creation
