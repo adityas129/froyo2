@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frozen Yogurt Anonymous - Find Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">FYA</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#steps">The Steps</a>
+                <a href="#meetings">Find Meetings</a>
+                <a href="#share">Share Story</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>Welcome to Frozen Yogurt Anonymous</h1>
+            <p>You're not alone in your journey to overcome frozen yogurt dependency.</p>
+            <button class="cta-button">Find a Meeting</button>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About FYA</h2>
+            <p>Frozen Yogurt Anonymous is a community of individuals who share their experience, strength, and hope with each other to overcome their frozen yogurt addiction and help others do the same.</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>1000+</h3>
+                    <p>Members Worldwide</p>
+                </div>
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Success Stories</p>
+                </div>
+                <div class="stat-box">
+                    <h3>24/7</h3>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="steps" class="steps">
+            <h2>The 12 Steps of FYA</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <h3>Step 1</h3>
+                    <p>We admitted we were powerless over frozen yogurt—that our lives had become unmanageable.</p>
+                </div>
+                <!-- More steps would be added here -->
+            </div>
+        </section>
+
+        <section id="meetings" class="meetings">
+            <h2>Find a Meeting</h2>
+            <div class="meeting-finder">
+                <input type="text" placeholder="Enter your location" id="location">
+                <button onclick="findMeetings()">Search</button>
+            </div>
+            <div id="meeting-results"></div>
+        </section>
+
+        <section id="share" class="share">
+            <h2>Share Your Story</h2>
+            <form id="story-form">
+                <textarea placeholder="Your journey with frozen yogurt addiction..."></textarea>
+                <button type="submit">Share Anonymously</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Emergency Support</h3>
+                <p>24/7 Froyo Crisis Hotline: 1-800-NO-FROYO</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#meetings">Find Meetings</a>
+                <a href="#share">Share Your Story</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Frozen Yogurt Anonymous. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
