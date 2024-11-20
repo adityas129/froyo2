@@ -139,6 +139,24 @@ section {
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
+
+.step h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.step p {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 1.1rem;
 }
 
 .meeting-finder {
@@ -223,5 +241,13 @@ footer {
     
     section {
         padding: 3rem 1rem;
+    }
+    
+    .steps-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .step {
+        padding: 1.5rem;
     }
 }
